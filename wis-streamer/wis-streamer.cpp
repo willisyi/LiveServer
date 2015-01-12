@@ -153,7 +153,7 @@ int main(int argc, char** argv) {
 		cnt++;
 		continue;
 	}
-	if(strcmp(argv[cnt],"-sem")==0)//bitrate
+	if(strcmp(argv[cnt],"-sem")==0)//
 	{
 	 	gSEMV = atoi(argv[cnt+1]);
 		gSEMVE = atoi(argv[cnt+2]);
@@ -162,12 +162,15 @@ int main(int argc, char** argv) {
 	}	
 	
   }
+
+ 
  mid = ShareMemInit(shm);//33
 
 
   // Begin by setting up our usage environment:
   TaskScheduler* scheduler = BasicTaskScheduler::createNew();
   UsageEnvironment* env = BasicUsageEnvironment::createNew(*scheduler);
+  *env <<"port="<<port<<",shm="<<shm<<",gSEMV="<<gSEMV<<",gSEMVE="<<gSEMVE<<"\n";
   int video_type;
   WISInput* H264InputDevice = NULL;
    static pid_t child[1] = {
